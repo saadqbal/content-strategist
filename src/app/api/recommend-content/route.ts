@@ -31,6 +31,7 @@ export async function GET(req: Request) {
       trendingTopics.push(...results.result.hits.map(hit => hit.fields['chunk_text']));
     }
 
+    
     const systemMessage: ChatCompletionMessageParam = {
       role: 'system',
       content: `You are a content strategist for a fast-growing business.
