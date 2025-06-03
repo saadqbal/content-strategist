@@ -14,7 +14,7 @@ A Next.js application for content strategy analysis and generation, leveraging A
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone https://github.com/saadqbal/content-strategist.git
 cd content-strategist-app
 ```
 
