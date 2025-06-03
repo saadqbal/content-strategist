@@ -42,7 +42,7 @@ Your task is to generate ${ideasToGenerate} unique blog post ideas that:
 Format each idea as a JSON object with:
 - slug: kebab-case version of the title (e.g., /guides/eco-friendly-marketing)
 - title: catchy, SEO-optimized title
-- reason: a one-sentence rationale explaining why this blog post would be valuable
+- reason: a one-sentence rationale explaining why this blog post would be valuable for maximum volume growth and fastest ranking.
 
 Return the output as an array of ${ideasToGenerate} JSON objects.`
     };
@@ -62,7 +62,7 @@ Top Competitor Slugs: ${competitorSlugs.join(', ')}`
 
 
     const chat = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gpt-4.1-mini',
       messages: [systemMessage, userMessage],
       temperature: 0.7,
       max_tokens: 2000
