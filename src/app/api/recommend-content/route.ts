@@ -12,7 +12,7 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const keyThemes = searchParams.get('themeSlug')?.split(',') || [];
     const competitorSlugs = await Competitor.distinct('slug');
-
+    const ideasToGenerate = searchParams.get('ideasToGenerate') || '10';
     const trendingTopics = [];
 
     // Get relevant content from Pinecone
@@ -34,7 +34,7 @@ export async function GET(req: Request) {
     const systemMessage: ChatCompletionMessageParam = {
       role: 'system',
       content: `You are a content strategist for a fast-growing business.
-Your task is to generate 10 unique blog post ideas that:
+Your task is to generate ${ideasToGenerate} unique blog post ideas that:
 1. Are unique but inspired by what's trending and what competitors are doing well
 2. Match one or more of the key themes
 3. Would resonate with the ideal customer based on the trending topics and competitor content
@@ -44,12 +44,12 @@ Format each idea as a JSON object with:
 - title: catchy, SEO-optimized title
 - reason: a one-sentence rationale explaining why this blog post would be valuable
 
-Return the output as an array of 10 JSON objects.`
+Return the output as an array of ${ideasToGenerate} JSON objects.`
     };
 
     const userMessage: ChatCompletionMessageParam = {
       role: 'user',
-      content: `Based on the following inputs, generate 10 recommended blog post ideas:
+      content: `Based on the following inputs, generate ${ideasToGenerate} recommended blog post ideas:
 
 Trending Topics: ${trendingTopics.join(', ')}
 

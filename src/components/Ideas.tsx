@@ -12,6 +12,7 @@ const Ideas: React.FC<IdeasProps> = ({ ideas }) => {
         <table className="content-table">
           <thead>
             <tr>
+              <th>No.</th>
               <th>Title</th>
               <th>Slug</th>
               <th>Reason</th>
@@ -20,6 +21,7 @@ const Ideas: React.FC<IdeasProps> = ({ ideas }) => {
           <tbody>
             {ideas.map((idea, i) => (
               <tr key={i}>
+                <td className="table-title">{i + 1}</td>
                 <td className="table-title">{idea.title}</td>
                 <td className="table-slug">{idea.slug}</td>
                 <td className="table-reason">{idea.reason}</td>
